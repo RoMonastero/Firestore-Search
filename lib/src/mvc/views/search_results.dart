@@ -49,21 +49,18 @@ class FirestoreSearchResults extends StatelessWidget {
 
   final bool descending;
 
-  final String orderBy;
-
-  const FirestoreSearchResults.builder(
-      {required this.descending,
-      required this.tag,
-      required this.firestoreCollectionName,
-      required this.searchBy,
-      this.limitOfRetrievedData = 10,
-      required this.dataListFromSnapshot,
-      this.builder,
-      this.initialBody,
-      this.resultsBodyBackgroundColor = Colors.white,
-      Key? key,
-      required this.orderBy})
-      : super(key: key);
+  const FirestoreSearchResults.builder({
+    required this.descending,
+    required this.tag,
+    required this.firestoreCollectionName,
+    required this.searchBy,
+    this.limitOfRetrievedData = 10,
+    required this.dataListFromSnapshot,
+    this.builder,
+    this.initialBody,
+    this.resultsBodyBackgroundColor = Colors.white,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
