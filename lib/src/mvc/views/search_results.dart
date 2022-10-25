@@ -49,6 +49,8 @@ class FirestoreSearchResults extends StatelessWidget {
 
   final bool descending;
 
+  final String orderBy;
+
   const FirestoreSearchResults.builder(
       {required this.descending,
       required this.tag,
@@ -59,7 +61,8 @@ class FirestoreSearchResults extends StatelessWidget {
       this.builder,
       this.initialBody,
       this.resultsBodyBackgroundColor = Colors.white,
-      Key? key})
+      Key? key,
+      required this.orderBy})
       : super(key: key);
 
   @override
@@ -80,8 +83,8 @@ class FirestoreSearchResults extends StatelessWidget {
                                   searchBy: searchBy ?? '',
                                   dataListFromSnapshot: dataListFromSnapshot,
                                   limitOfRetrievedData: limitOfRetrievedData)
-                              .searchData(
-                                  _controller.searchQuery.value, descending),
+                              .searchData(_controller.searchQuery.value,
+                                  orderBy, descending),
                           builder: builder!),
                     )
             ],
