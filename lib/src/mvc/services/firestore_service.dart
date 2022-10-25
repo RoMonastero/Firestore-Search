@@ -15,12 +15,12 @@ class FirestoreService<T> {
       this.limitOfRetrievedData});
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  Stream<List> searchData(String query) {
+  Stream<List> searchData(String query, bool descending) {
     final collectionReference = firebaseFirestore.collection(collectionName!);
     return query.isEmpty
         ? Stream.empty()
         : collectionReference
-            .orderBy('$searchBy', descending: false)
+            .orderBy('$searchBy', descending: descending)
             .where('$searchBy', isGreaterThanOrEqualTo: query)
             .where('$searchBy', isLessThan: query + 'z')
             .limit(limitOfRetrievedData!)

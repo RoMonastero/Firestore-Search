@@ -33,6 +33,7 @@ class _SearchFeedState extends State<SearchFeed> {
           ),
           Expanded(
             child: FirestoreSearchResults.builder(
+              descending: false,
               tag: 'test',
               firestoreCollectionName: 'packages',
               searchBy: 'tool',

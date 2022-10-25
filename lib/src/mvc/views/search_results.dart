@@ -46,9 +46,12 @@ class FirestoreSearchResults extends StatelessWidget {
   /// Returns the results from firestore and displays the data using [builder] function provided by the developer
   /// This widget can be used anywhere is the widget tree, and the results will correspond the [searchQuery] of [FirestoreSearchBar] linked by [tag] parameter
   ///
+
+  final bool descending;
+
   const FirestoreSearchResults.builder(
-      {
-        required this.tag,
+      {required this.descending,
+      required this.tag,
       required this.firestoreCollectionName,
       required this.searchBy,
       this.limitOfRetrievedData = 10,
@@ -77,7 +80,8 @@ class FirestoreSearchResults extends StatelessWidget {
                                   searchBy: searchBy ?? '',
                                   dataListFromSnapshot: dataListFromSnapshot,
                                   limitOfRetrievedData: limitOfRetrievedData)
-                              .searchData(_controller.searchQuery.value),
+                              .searchData(
+                                  _controller.searchQuery.value, descending),
                           builder: builder!),
                     )
             ],
